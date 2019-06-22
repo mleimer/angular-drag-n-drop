@@ -12,41 +12,35 @@ export class InfiniteListsComponent {
 
   lists: List[] = [];
 
-  newCardNames: string[] = [];
-  newListName = '';
-
   constructor() {
   }
 
-  drop(event: CdkDragDrop<ListItem[]>) {
+  onDrop(event: CdkDragDrop<ListItem[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex
+      );
     }
   }
 
-  addNewList() {
-    this.lists.push(new List(this.newListName));
-    this.newListName = '';
-    this.newCardNames.push('');
+  addNewList(value: string) {
+    this.lists.push(new List(value));
   }
 
-  removeList(listIndex: number) {
-    this.lists.splice(listIndex, 1);
+  removeList(toBeRemovedList: List) {
+    this.lists = this.lists.filter(list => list !== toBeRemovedList);
   }
 
-  addNewCardItem(listIndex: number) {
-    const newListItem = new ListItem(this.newCardNames[listIndex]);
-    this.lists[listIndex].items.push(newListItem);
-    this.newCardNames[listIndex] = '';
+  addNewListItem(list: List, value: string) {
+    list.items.push(new ListItem(value));
   }
 
-  removeCardItem(list: List, item: ListItem) {
-    list.items = list.items.filter(i => i !== item);
+  removeListItem(list: List, toBeRemovedListItem: ListItem) {
+    list.items = list.items.filter(listItem => listItem !== toBeRemovedListItem);
   }
 
   mayDropInThisList(drag: CdkDrag, drop: CdkDropList) {

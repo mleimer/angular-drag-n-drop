@@ -1,0 +1,10 @@
+<div>{{item.name}}</div>
+<div class="list-item-buttons">
+  <mat-slide-toggle (change)="setListItemEnabled.emit($event.checked)" [checked]="!item.disabled">
+    <mat-icon>transform</mat-icon>
+  </mat-slide-toggle>
+  <button (click)="removeListItem.emit()" mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+  <ng-content></ng-content>
+</div>

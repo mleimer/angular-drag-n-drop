@@ -1,0 +1,7 @@
+<form (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <input [(ngModel)]="value" [placeholder]="label" matInput name="value">
+  </mat-form-field>
+  <button mat-button type="submit">Create</button>
+</form>

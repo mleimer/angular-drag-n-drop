@@ -1,48 +1,22 @@
 <div cdkDropListGroup class="container">
-  <div *ngFor="let list of lists; let i = index" class="example-container">
-    <div class="title">
-      <h2>{{list.title}}</h2>
-      <div class="header-buttons">
-        <mat-slide-toggle [checked]="!list.disabled" (change)="list.disabled = !$event.checked">Drag/Drop</mat-slide-toggle>
-        <button mat-icon-button (click)="removeList(i)">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-    </div>
-
+  <div *ngFor="let list of lists" class="example-container">
+    <app-list-header (removeList)="removeList(list)" (setListEnabled)="list.disabled = !$event"
+                     [list]="list"></app-list-header>
     <div cdkDropList
-      [cdkDropListDisabled]="list.disabled"
-      [cdkDropListEnterPredicate]="mayDropInThisList"
-      [cdkDropListData]="list.items"
-      (cdkDropListDropped)="drop($event)"
-      class="example-list">
-      <div *ngFor="let item of list.items" cdkDrag [cdkDragDisabled]="item.disabled" cdkDragBoundary=".container" class="example-box" >
-        <div>{{item.name}}</div>
-        <div class="header-buttons">
-          <mat-slide-toggle [checked]="!item.disabled" (change)="item.disabled = !$event.checked">Drag
-          </mat-slide-toggle>
-          <button mat-icon-button (click)="removeCardItem(list, item)">
-            <mat-icon>close</mat-icon>
-          </button>
+         (cdkDropListDropped)="onDrop($event)"
+         [cdkDropListData]="list.items"
+         [cdkDropListDisabled]="list.disabled"
+         [cdkDropListEnterPredicate]="mayDropInThisList"
+         class="example-list">
+      <div *ngFor="let item of list.items" [cdkDragDisabled]="item.disabled" cdkDrag cdkDragBoundary=".container">
+        <app-list-item (removeListItem)="removeListItem(list, item)" (setListItemEnabled)="item.disabled = !$event"
+                       [item]="item">
           <mat-icon cdkDragHandle>drag_handle</mat-icon>
-        </div>
-      <!--  <div *cdkDragPreview class="preview-class">My Preview of {{item.name}}</div>-->
+        </app-list-item>
       </div>
     </div>
-
-    <form (ngSubmit)="addNewCardItem(i)">
-      <mat-form-field>
-        <input matInput [(ngModel)]="newCardNames[i]" name="newCardName" placeholder="New card name">
-      </mat-form-field>
-      <button type="submit" mat-button>Create</button>
-    </form>
+    <app-simple-input-submit (submittedValue)="addNewListItem(list, $event)"
+                             label="New card name"></app-simple-input-submit>
   </div>
-  <div>
-    <form (ngSubmit)="addNewList()">
-      <mat-form-field>
-        <input matInput [(ngModel)]="newListName" name="newListName" placeholder="New list title">
-      </mat-form-field>
-      <button type="submit" mat-button>Create</button>
-    </form>
-  </div>
+  <app-simple-input-submit (submittedValue)="addNewList($event)" label="New list name"></app-simple-input-submit>
 </div>
