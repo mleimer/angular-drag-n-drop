@@ -7,18 +7,22 @@ import { BasicComponent } from './drag-n-drop/basic/basic.component';
 import {MaterialModule} from './material.module';
 import {AppRoutingModule} from './app-routing.module';
 import { AdvancedComponent } from './drag-n-drop/advanced/advanced.component';
+import { InfiniteListsComponent } from './drag-n-drop/infinite-lists/infinite-lists.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicComponent,
-    AdvancedComponent
+    AdvancedComponent,
+    InfiniteListsComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

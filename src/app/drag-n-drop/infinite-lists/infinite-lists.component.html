@@ -1,0 +1,46 @@
+<div cdkDropListGroup class="container">
+  <div *ngFor="let list of lists; let i = index" class="example-container">
+    <div class="title">
+      <h2>{{list.title}}</h2>
+      <div class="header-buttons">
+        <button mat-icon-button (click)="removeList(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="list.items"
+      (cdkDropListDropped)="drop($event)"
+      class="example-list">
+      <div *ngFor="let item of list.items" cdkDrag [cdkDragDisabled]="item.disabled" cdkDragBoundary=".container" class="example-box" >
+        <div>{{item.name}}</div>
+        <div class="header-buttons">
+          <mat-slide-toggle [checked]="!item.disabled" (change)="item.disabled = !$event.checked">Drag
+          </mat-slide-toggle>
+          <button mat-icon-button (click)="removeCardItem(i, item)">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-icon cdkDragHandle>drag_handle</mat-icon>
+        </div>
+        <div *cdkDragPreview class="preview-class">My Preview of {{item.name}}</div>
+      </div>
+    </div>
+
+    <form (ngSubmit)="addNewCardItem(i)">
+      <mat-form-field>
+        <input matInput [(ngModel)]="newCardNames[i]" name="newCardName" placeholder="New card name">
+      </mat-form-field>
+      <button type="submit" mat-button>Create</button>
+    </form>
+  </div>
+  <div>
+    <form (ngSubmit)="addNewList()">
+      <mat-form-field>
+        <input matInput [(ngModel)]="newListName" name="newListName" placeholder="New list title">
+      </mat-form-field>
+      <button type="submit" mat-button>Create</button>
+    </form>
+  </div>
+</div>

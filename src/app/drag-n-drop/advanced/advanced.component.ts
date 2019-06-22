@@ -38,5 +38,7 @@ export class AdvancedComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+    console.log(this.todo);
+    console.log(this.done);
   }
 }
