@@ -12,8 +12,10 @@ export class InfiniteListsComponent {
 
   lists: List[] = [];
 
-  constructor() {
-  }
+
+  /**
+   * Drag'N'Drop
+   */
 
   onDrop(event: CdkDragDrop<ListItem[]>) {
     if (event.previousContainer === event.container) {
@@ -26,6 +28,15 @@ export class InfiniteListsComponent {
       );
     }
   }
+
+  mayDropInThisList(drag: CdkDrag, drop: CdkDropList) {
+    return !drop.disabled;
+  }
+
+
+  /**
+   * List and list item manipulation
+   */
 
   addNewList(value: string) {
     this.lists.push(new List(value));
@@ -43,8 +54,5 @@ export class InfiniteListsComponent {
     list.items = list.items.filter(listItem => listItem !== toBeRemovedListItem);
   }
 
-  mayDropInThisList(drag: CdkDrag, drop: CdkDropList) {
-    return !drop.disabled;
-  }
 
 }
