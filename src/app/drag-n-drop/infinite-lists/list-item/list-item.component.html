@@ -1,6 +1,6 @@
 <div>{{item.name}}</div>
 <div class="list-item-buttons">
-  <mat-slide-toggle (change)="setListItemEnabled.emit($event.checked)" [checked]="!item.disabled">
+  <mat-slide-toggle (change)="setListItemEnabled.emit($event.checked)" [checked]="!item.disabled" color="primary">
     <mat-icon>transform</mat-icon>
   </mat-slide-toggle>
   <button (click)="removeListItem.emit()" mat-icon-button>

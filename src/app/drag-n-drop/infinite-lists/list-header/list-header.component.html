@@ -1,7 +1,7 @@
 <div class="list-header">
   <h2>{{list.title}}</h2>
   <div class="list-header-buttons">
-    <mat-slide-toggle (change)="setListEnabled.emit($event.checked)" [checked]="!list.disabled">
+    <mat-slide-toggle (change)="setListEnabled.emit($event.checked)" [checked]="!list.disabled" color="primary">
       <mat-icon>transform</mat-icon>
     </mat-slide-toggle>
     <button (click)="removeList.emit()" mat-icon-button>
