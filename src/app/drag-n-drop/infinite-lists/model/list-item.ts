@@ -2,9 +2,9 @@ export class ListItem {
   name: string;
   disabled: boolean;
 
-  constructor(name: string) {
+  constructor(name: string, disabled: boolean = false) {
     this.name = name;
-    this.disabled = false;
+    this.disabled = disabled;
   }
 
 }

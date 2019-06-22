@@ -1,23 +1,18 @@
-<div cdkDropListGroup class="container">
+<div class="container">
   <div *ngFor="let list of lists" class="example-container">
     <app-list-header (removeList)="removeList(list)" (setListEnabled)="list.disabled = !$event"
-                     [list]="list"></app-list-header>
-    <div cdkDropList
-         (cdkDropListDropped)="onDrop($event)"
-         [cdkDropListData]="list.items"
-         [cdkDropListDisabled]="list.disabled"
-         [cdkDropListEnterPredicate]="mayDropInThisList"
-         class="example-list">
-      <div *ngFor="let item of list.items" [cdkDragDisabled]="item.disabled" cdkDrag cdkDragBoundary=".container">
+                     [list]="list">
+    </app-list-header>
+    <div class="example-list">
+      <div *ngFor="let item of list.listItems">
         <app-list-item (removeListItem)="removeListItem(list, item)" (setListItemEnabled)="item.disabled = !$event"
                        [item]="item">
-          <mat-icon cdkDragHandle>drag_handle</mat-icon>
         </app-list-item>
       </div>
     </div>
-    <app-simple-input-submit (submittedValue)="addNewListItem(list, $event)"
-                             label="New card name"></app-simple-input-submit>
+    <!--    <app-simple-input-submit (submittedValue)="addNewListItem(list, $event)"
+                                 label="New card name"></app-simple-input-submit>-->
   </div>
-  <app-simple-input-submit (submittedValue)="addNewList($event)"
-                           label="New list name"></app-simple-input-submit>
+  <!--  <app-simple-input-submit (submittedValue)="addNewList($event)"
+                             label="New list name"></app-simple-input-submit>-->
 </div>
