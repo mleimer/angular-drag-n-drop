@@ -3,14 +3,16 @@
     <div class="title">
       <h2>{{list.title}}</h2>
       <div class="header-buttons">
+        <mat-slide-toggle [checked]="!list.disabled" (change)="list.disabled = !$event.checked">Drag/Drop</mat-slide-toggle>
         <button mat-icon-button (click)="removeList(i)">
           <mat-icon>close</mat-icon>
         </button>
       </div>
     </div>
 
-    <div
-      cdkDropList
+    <div cdkDropList
+      [cdkDropListDisabled]="list.disabled"
+      [cdkDropListEnterPredicate]="mayDropInThisList"
       [cdkDropListData]="list.items"
       (cdkDropListDropped)="drop($event)"
       class="example-list">
@@ -24,7 +26,7 @@
           </button>
           <mat-icon cdkDragHandle>drag_handle</mat-icon>
         </div>
-        <div *cdkDragPreview class="preview-class">My Preview of {{item.name}}</div>
+      <!--  <div *cdkDragPreview class="preview-class">My Preview of {{item.name}}</div>-->
       </div>
     </div>
 

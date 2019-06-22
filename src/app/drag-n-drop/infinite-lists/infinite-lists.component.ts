@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {List} from './model/list';
 import {ListItem} from './model/list-item';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-infinite-lists',
@@ -47,6 +47,10 @@ export class InfiniteListsComponent {
 
   removeCardItem(list: List, item: ListItem) {
     list.items = list.items.filter(i => i !== item);
+  }
+
+  mayDropInThisList(drag: CdkDrag, drop: CdkDropList) {
+    return !drop.disabled;
   }
 
 }
