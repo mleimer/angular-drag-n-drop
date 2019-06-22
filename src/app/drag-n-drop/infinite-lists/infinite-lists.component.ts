@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {List} from './model/list';
 import {ListItem} from './model/list-item';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {MatSlideToggleChange} from '@angular/material';
 
 @Component({
   selector: 'app-infinite-lists',
@@ -37,7 +36,7 @@ export class InfiniteListsComponent {
   }
 
   removeList(listIndex: number) {
-    this.lists = this.lists.splice(listIndex, 1);
+    this.lists.splice(listIndex, 1);
   }
 
   addNewCardItem(listIndex: number) {
@@ -46,17 +45,8 @@ export class InfiniteListsComponent {
     this.newCardNames[listIndex] = '';
   }
 
-
-  removeCardItem(listIndex: number, item: ListItem) {
-    this.lists[listIndex].items = this.lists[listIndex].items.filter(i => i !== item);
+  removeCardItem(list: List, item: ListItem) {
+    list.items = list.items.filter(i => i !== item);
   }
 
-  /*
-    toggleDragability(listIndex: number) {
-      this.lists[listIndex].disabled = ! this.lists[listIndex].disabled;
-    }*/
-  toggleDragability($event: MatSlideToggleChange, item: ListItem) {
-    item.disabled = !$event.checked;
-    console.warn(item.disabled);
-  }
 }

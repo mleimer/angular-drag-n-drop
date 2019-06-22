@@ -19,7 +19,7 @@
         <div class="header-buttons">
           <mat-slide-toggle [checked]="!item.disabled" (change)="item.disabled = !$event.checked">Drag
           </mat-slide-toggle>
-          <button mat-icon-button (click)="removeCardItem(i, item)">
+          <button mat-icon-button (click)="removeCardItem(list, item)">
             <mat-icon>close</mat-icon>
           </button>
           <mat-icon cdkDragHandle>drag_handle</mat-icon>
