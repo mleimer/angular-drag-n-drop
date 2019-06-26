@@ -10,8 +10,19 @@ import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} f
 })
 export class InfiniteListsComponent {
 
-  lists: List[] = [];
-
+  lists: List[] = [
+    new List('Demo List', [
+      new ListItem('Item 1'),
+      new ListItem('Item 2'),
+      new ListItem('Item 3'),
+      new ListItem('Disabled item', true),
+      new ListItem('Item 4')
+    ]),
+    new List('Disabled List', [
+      new ListItem('Item in Disabled List 1'),
+      new ListItem('Item in Disabled List 2')
+    ], true)
+  ];
 
   /**
    * Drag'N'Drop
@@ -47,11 +58,11 @@ export class InfiniteListsComponent {
   }
 
   addNewListItem(list: List, value: string) {
-    list.items.push(new ListItem(value));
+    list.listItems.push(new ListItem(value));
   }
 
   removeListItem(list: List, toBeRemovedListItem: ListItem) {
-    list.items = list.items.filter(listItem => listItem !== toBeRemovedListItem);
+    list.listItems = list.listItems.filter(listItem => listItem !== toBeRemovedListItem);
   }
 
 

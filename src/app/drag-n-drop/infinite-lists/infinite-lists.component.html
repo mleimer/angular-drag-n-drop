@@ -4,11 +4,11 @@
                      [list]="list"></app-list-header>
     <div cdkDropList
          (cdkDropListDropped)="onDrop($event)"
-         [cdkDropListData]="list.items"
+         [cdkDropListData]="list.listItems"
          [cdkDropListDisabled]="list.disabled"
          [cdkDropListEnterPredicate]="mayDropInThisList"
          class="example-list">
-      <div *ngFor="let item of list.items" [cdkDragDisabled]="item.disabled" cdkDrag cdkDragBoundary=".container">
+      <div *ngFor="let item of list.listItems" [cdkDragDisabled]="item.disabled" cdkDrag cdkDragBoundary=".container">
         <app-list-item (removeListItem)="removeListItem(list, item)" (setListItemEnabled)="item.disabled = !$event"
                        [item]="item">
           <mat-icon cdkDragHandle>drag_handle</mat-icon>

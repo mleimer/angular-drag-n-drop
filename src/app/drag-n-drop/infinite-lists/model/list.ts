@@ -2,13 +2,13 @@ import {ListItem} from './list-item';
 
 export class List {
   title: string;
-  items: ListItem[];
+  listItems: ListItem[];
   disabled: boolean;
 
-  constructor(name: string) {
+  constructor(name: string, listItems: ListItem[] = [], disabled: boolean = false) {
     this.title = name;
-    this.items = [];
-    this.disabled = false;
+    this.listItems = listItems;
+    this.disabled = disabled;
   }
 }
 
