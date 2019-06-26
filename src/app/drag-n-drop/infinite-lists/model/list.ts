@@ -8,7 +8,7 @@ export class List {
   constructor(name: string, listItems: ListItem[] = [], disabled: boolean = false) {
     this.title = name;
     this.listItems = listItems;
-    this.disabled = false;
+    this.disabled = disabled;
   }
 }
 
