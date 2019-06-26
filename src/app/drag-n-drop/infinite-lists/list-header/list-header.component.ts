@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {List} from '../model/list';
 
 @Component({
@@ -9,7 +9,7 @@ import {List} from '../model/list';
 export class ListHeaderComponent {
 
   @Input() list!: List;
-  @Output() setListEnabled = new EventEmitter<boolean>();
-  @Output() removeList = new EventEmitter<void>();
+  /*  @Output() setListEnabled = new EventEmitter<boolean>();
+    @Output() removeList = new EventEmitter<void>();*/
 
 }

@@ -1,13 +1,15 @@
 <div class="container">
   <div *ngFor="let list of lists" class="example-container">
-    <app-list-header (removeList)="removeList(list)" (setListEnabled)="list.disabled = !$event"
-                     [list]="list">
-    </app-list-header>
+    <!--    <app-list-header (removeList)="removeList(list)" (setListEnabled)="list.disabled = !$event"
+                         [list]="list">
+        </app-list-header>-->
+    <app-list-header [list]="list"></app-list-header>
     <div class="example-list">
       <div *ngFor="let item of list.listItems">
-        <app-list-item (removeListItem)="removeListItem(list, item)" (setListItemEnabled)="item.disabled = !$event"
-                       [item]="item">
-        </app-list-item>
+        <!--      <app-list-item (removeListItem)="removeListItem(list, item)" (setListItemEnabled)="item.disabled = !$event"
+                             [item]="item">
+              </app-list-item> -->
+        <app-list-item [item]="item"></app-list-item>
       </div>
     </div>
     <!--    <app-simple-input-submit (submittedValue)="addNewListItem(list, $event)"
